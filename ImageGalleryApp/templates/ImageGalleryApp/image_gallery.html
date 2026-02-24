@@ -1,0 +1,50 @@
+{% extends 'ImageGalleryApp/base.html' %}
+
+
+{% block title %}
+    Image Gallery Page
+{% endblock title %}
+    
+
+{% block content %}
+<div class="card w-50 mx-auto text-center" style="margin-top:10vh;">
+    <div class="card-body">
+        <p>This is an Image Gallery page <a href="{% url 'logout' %}">logout</a></p>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="file" name="image" id="image" class="form-control" accept=".jpg,.jpeg,.png,.gif" required>
+                <button type="submit" class="btn btn-outline-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Gallery Display Card -->
+<div class="card mx-auto mt-4" style="width:95%;">
+    <div class="card-body">
+        <div class="row g-4">
+            {% if images %}
+                {% for image in images %}
+                    <!-- Each image needs to be in a column div -->
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="card h-100">
+                            <a href="{% url 'image_details' image.id %}" class='bg-primary'>
+                                <img src="{{ image.image.url }}" 
+                                 alt="Image" 
+                                 class=""
+                                 style="height: 200px; width:100%; object-fit: cover; object-position:center;">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <p class="text-center text-muted">No images to show...</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

@@ -1,0 +1,36 @@
+{% extends 'ImageGalleryApp/base.html' %}
+
+
+{% block title %}
+    RegisterPage
+{% endblock title %}
+    
+
+{% block content %}
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="card rounded-2 overflow-hidden">
+            <h1 class="card-title text-center m-0 pb-2 bg-primary text-white">Register Form</h1>
+            <form action="" method="post" class="form card-body">
+                {% csrf_token %}
+                <label for="id_username" class="form-label">username</label>
+                <input type="text" name="username" class="form-control d-inline" required>
+                <br>
+                <label for="id_email" class="form-label">email</label>
+                <input type="email" name="email" class="form-control d-inline" required>
+                <br>
+                <label for="id_password1" class="form-label">password</label>
+                <input type="password" name="password1" class="form-control d-inline" required>
+                <br>
+                <label for="id_password2" class="form-label">confirm password</label>
+                <input type="password" name="password2" class="form-control d-inline" required>
+                <br>
+                <p class="text-center">Already have an account? <a href="{% url 'login' %}" class="fw-bold">Login</a></p>
+                <br><br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+    

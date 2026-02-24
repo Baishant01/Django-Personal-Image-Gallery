@@ -1,0 +1,27 @@
+{% extends 'ImageGalleryApp/base.html' %}
+
+
+{% block title %}
+    Details | Image-gallery
+{% endblock title %}
+    
+
+{% block content %}
+    
+    {% if img_obj %}
+        <div class="container p-2 d-flex justify-content-center" style="margin-top:10vh;">
+            <div style="height:500px">
+                <img src="{{img_obj.image.url}}" alt="" style="height:600px; object-fit:cover; margin-inline:auto;">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class='d-flex gap-2'>
+                        <a href="{% url 'image_delete' img_obj.id %}" class="btn btn-danger w-50 mt-2">Delete</a>
+                        <a href="{% url 'image_gallery'%}" class="btn btn-warning w-50 mt-2">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+        
+{% endblock content %}
+    
