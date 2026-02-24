@@ -22,7 +22,7 @@ A Django-based image gallery where users can upload, view, and manage their pers
 1. Clone repo
 ```bash
     git clone https://github.com/Baishant01/Django-Personal-Image-Gallery.git
-    cd imagegallery
+    cd ImageGallery
 ```
 
 2. Create virtual environment
